@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import '../css/style.css'; // Import your CSS file
+import React, { useState, useEffect } from 'react';
 import { IonIcon } from '@ionic/react';
+
+import '../css/style.css';
 
 function ServiceSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -8,35 +9,28 @@ function ServiceSection() {
     {
       title: 'Website Design',
       description: 'Your website description here',
-      iconName: 'desktop-outline',
     },
     {
       title: 'SEO Marketing',
       description: 'Your SEO marketing description here',
-      iconName: 'podium-outline',
     },
     {
       title: 'eCommerce',
       description: 'Your eCommerce description here',
-      iconName: 'basket-outline',
     },
     {
       title: 'Graphic Design',
       description: 'Your graphic design description here',
-      iconName: 'color-filter-outline',
     },
     {
       title: 'Digital Marketing',
       description: 'Your digital marketing description here',
-      iconName: 'megaphone-outline',
     },
     {
       title: 'Social Media',
       description: 'Your social media description here',
-      iconName: 'chatbubbles-outline',
     },
   ];
-
   const slideNext = () => {
     setCurrentSlide((prevSlide) => (prevSlide === serviceItems.length - 1 ? 0 : prevSlide + 1));
   };
@@ -45,9 +39,16 @@ function ServiceSection() {
     setCurrentSlide((prevSlide) => (prevSlide === 0 ? serviceItems.length - 1 : prevSlide - 1));
   };
 
+  useEffect(() => {
+    const sliderInterval = setInterval(slideNext, 5000);
+
+    return () => {
+      clearInterval(sliderInterval);
+    };
+  }, []);
+
   return (
     <section className="service" aria-labelledby="service-label">
-      {/* Your JSX code for the service section here */}
       <div className="slider" data-slider>
         <ul className="slider-container service-list" data-slider-container>
           {serviceItems.map((item, index) => (
