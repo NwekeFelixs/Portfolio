@@ -1,5 +1,5 @@
 import React from 'react';
-import heroBanner from '../img/hero-banner.jpg';
+import heroBanner from '../img/hero-banner.png';
 import { AiOutlineCloudDownload } from 'react-icons/ai';
 
 function HeroSection() {
